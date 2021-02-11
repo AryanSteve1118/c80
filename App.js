@@ -1,17 +1,25 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import SignUpLoginScreen from './screens/SignUpLoginScreen'
+import {createAppContainer,createSwitchNavigator} from 'react-navigation'
+import WelcomeScreen from './screens/WelcomeScreen';
+import AppTabNavigator from './components/AppTabNavigator'
 
 export default class App extends Component {
  render(){ 
   return (
     <View style={styles.container}>
-      <SignUpLoginScreen/>
+      <AppContainer/>
     </View>
   );
 }
 }
+const switchNavigator = createSwitchNavigator({
+  WelcomeScreen:{screen: WelcomeScreen},
+  BottomTab:{screen: AppTabNavigator}
+})
+
+const AppContainer =  createAppContainer(switchNavigator);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
