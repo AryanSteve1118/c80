@@ -28,7 +28,7 @@ export default class ExchangeScreen extends Component{
   addItem =(itemName,description)=>{
     var userId = this.state.userId
     var randomRequestId = this.createUniqueId()
-    db.collection('requested_books').add({
+    db.collection('all_requests').add({
         "user_id": userId,
         "item_name":itemName,
         "description ":description ,
@@ -40,7 +40,11 @@ export default class ExchangeScreen extends Component{
         description  : ''
     })
 
-    return Alert.alert("Book Requested Successfully")
+    return Alert.alert("Requested Successfully","",[{text:"OK",
+    onPress:()=>{
+      this.props.navigation.navigate("HomeScreen")
+    }
+  }])
   }
     render(){
         return(
